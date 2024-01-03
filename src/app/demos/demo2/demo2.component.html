@@ -1,0 +1,58 @@
+<p>demo2 works!</p>
+<h3>Directives Structurelles</h3>
+
+<!-- Angular Legacy : Utilisation de directives à l'intérieur d'une balise container -->
+<div style="border: 1px black solid;">
+    <p 
+        style="cursor : pointer; border : 1px black solid; background-color: #a9a9a9;"
+        (click)="switchVisible()"
+    >Click me</p>
+
+    <div *ngIf="isVisible; else notVisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, assumenda enim officiis facilis tenetur deserunt, hic architecto facere ex perspiciatis labore amet autem quasi optio laboriosam consequuntur. Sequi, molestias dolore?</div>
+
+    <ng-template #notVisible>Bidule</ng-template>
+</div>
+
+<br>
+
+<!-- Angular 17 : Décorateur englobant-->
+@if (isVisible) {
+    <div>
+        <button>Click</button>
+        <app-navbar></app-navbar>
+    </div>
+}
+@else {
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum animi doloribus quos, earum nihil sit. Quasi accusamus quos quas deleniti, eligendi dolorem quidem ea qui quisquam exercitationem? Placeat, velit tempore?
+}
+
+<hr>
+
+<ul>
+    <li *ngFor="let nom of tab; let i = index; let p = even">
+        <p [ngClass]="p ? 'pair' : ''">{{i}} - {{nom}}</p>
+    </li>
+</ul>
+
+<ul>
+    @for (nom of tab; track $index) {
+        <li>{{$index + 1}} - {{nom}}</li>
+    }
+</ul>
+
+<hr>
+
+<input type="number" [(ngModel)]="value">
+<div [ngSwitch]="value">
+    <div *ngSwitchCase="1">Salut</div>
+    <div *ngSwitchCase="2">Coucou</div>
+    <div *ngSwitchCase="3">Hello</div>
+    <div *ngSwitchDefault>La valeur doit être entre 1 et 3</div>
+</div>
+
+@switch (value) {
+    @case (1) {<div>Salut</div>}
+    @case (2) {<div>Coucou</div>}
+    @case (3) {<div>Hello</div>}
+    @default {<div>La valeur doit être entre 1 et 3</div>}
+}

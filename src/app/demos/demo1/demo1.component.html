@@ -1,0 +1,22 @@
+<p>demo1 works!</p>
+<h3>Binding</h3>
+
+<!-- Binding one way : Lecture de la valeur d'une propriété : Lecture seule -->
+<p>Valeur de myProp : {{myProp | json}} </p>
+<b><button (click)="add()">Click!</button></b>
+
+<!-- Binding two ways : Affectation de la valeur à une propriété : Lecture et écriture -->
+<p>Valeur de myString : {{myString}} </p>
+<p><input type="text" [(ngModel)]="myString"></p>
+
+<!-- Attribute binding : Affectation d'une valeur -->
+<p><img [src]="monImage" [width]="350"></p>
+
+<!-- Ou d'une expression booléenne à n'importe quel attribut HTML -->
+<p [ngClass]="value > 7 ? 'red' : value < 3 ? 'green' : ''">
+    Valeur : {{value}}
+    <button (click)="moins()" [disabled]="value < 1"> - </button>
+    <button (click)="plus()" [disabled]="value >= 10"> + </button>
+</p>
+
+<!-- Event Binding : Déclenchement d'une méthode sous l'effet d'un event -->

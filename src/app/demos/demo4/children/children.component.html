@@ -1,0 +1,19 @@
+<p>children works!</p>
+
+<ul>
+    @for (link of list; track $index) {
+        <li>
+            <a [ngClass]="link.children ? 'category' : ''"
+            [routerLink]="link.url"
+            >
+               {{link.title}} 
+            </a>
+        </li>
+    }
+</ul>
+
+<p>Valeur venant du composant appelant : {{valeur}}</p>
+<p>
+    <button (click)="reponse(true)">Oui</button>
+    <button (click)="reponse(false)">Non</button>
+</p>
